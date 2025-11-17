@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>My Heartfelt Apology</title>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #050202;
+            --bg-mid: #1b0f0f;
+            --gold: #d4af37;
+            --gold-strong: #c59d30;
+            --accent: #c9a96e;
+            --text: #efe3df;
+            --muted: #bfae9d;
+            --card: rgba(18, 8, 8, 0.82);
+            --frame-border: rgba(212, 175, 55, 0.26);
+            --glass: rgba(255, 255, 255, 0.03);
+            --shadow: rgba(0, 0, 0, 0.65);
+        }
+
+        /* Reset */
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: radial-gradient(1200px 600px at 10% 10%, rgba(25, 8, 8, 0.35), transparent 8%), linear-gradient(180deg, var(--bg-deep), var(--bg-mid));
+            color: var(--text);
+            font-family: 'Lato', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale
+        }
+
+        a {
+            color: inherit
+        }
+
+        .app {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px 16px
+        }
+
+        /* Header / hero */
+        header {
+            margin-top: 10px;
+            margin-bottom: 10px
+        }
+
+        .hero-card {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.62));
+            border-radius: 16px;
+            padding: 34px 26px;
+            box-shadow: 0 20px 60px var(--shadow);
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 0.2px;
+            text-shadow: 0 6px 24px rgba(197, 157, 48, 0.06)
+        }
+
+        .divider {
+            width: 120px;
+            height: 2px;
+            margin: 14px auto;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.12)
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            margin: 10px 0 16px 0;
+            font-size: 1.18rem
+        }
+
+        p.leadin {
+            font-style: italic;
+            color: var(--muted);
+            margin-bottom: 16px
+        }
+
+        /* Music button centered, with glowing indicator */
+        .music-ctr {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .music-wrap {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #bigPlay {
+            background: linear-gradient(135deg, #7a2b2b 0%, #a0522d 100%);
+            color: var(--gold);
+            padding: 14px 34px;
+            border-radius: 36px;
+            border: none;
+            font-weight: 700;
+            font-size: 1.02rem;
+            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        #bigPlay:active {
+            transform: translateY(1px)
+        }
+
+        /* glowing ring around button when music plays */
+        .glow-ring {
+            position: absolute;
+            width: 86px;
+            height: 86px;
+            border-radius: 999px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(.95);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity .4s ease, transform .4s ease;
+            box-shadow: 0 0 28px 6px rgba(212, 175, 55, 0.06), inset 0 0 40px rgba(212, 175, 55, 0.02);
+        }
+
+        .playing .glow-ring {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            animation: pulseGlow 2.6s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 24px 4px rgba(212, 175, 55, 0.06)
+            }
+
+            50% {
+                box-shadow: 0 0 40px 12px rgba(212, 175, 55, 0.10)
+            }
+
+            100% {
+                box-shadow: 0 0 24px 4px rgba(212, 175, 55, 0.06)
+            }
+        }
+
+        /* Nav quick links */
+        nav.quick {
+            text-align: center;
+            margin: 14px 0 22px 0;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.09);
+            color: var(--gold);
+            padding: 8px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            backdrop-filter: blur(6px);
+        }
+
+        /* page container */
+        main {
+            min-height: 60vh
+        }
+
+        section.page {
+            display: none;
+            padding: 18px 0 54px 0;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: all .45s cubic-bezier(.2, .9, .2, 1);
+            will-change: transform, opacity;
+        }
+
+        section.page.active {
+            display: block;
+            opacity: 1;
+            transform: none;
+        }
+
+        /* slide-in / out animations controlled by classes */
+        .slide-in-left {
+            animation: slideInLeft .46s cubic-bezier(.2, .9, .2, 1);
+        }
+
+        .slide-in-right {
+            animation: slideInRight .46s cubic-bezier(.2, .9, .2, 1);
+        }
+
+        .slide-out-left {
+            animation: slideOutLeft .36s cubic-bezier(.2, .9, .2, 1);
+        }
+
+        .slide-out-right {
+            animation: slideOutRight .36s cubic-bezier(.2, .9, .2, 1);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-18px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(18px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @keyframes slideOutLeft {
+            from {
+                opacity: 1;
+                transform: none
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(-12px)
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                opacity: 1;
+                transform: none
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(12px)
+            }
+        }
+
+        /* card style */
+        .content-card {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.68));
+            border-radius: 14px;
+            padding: 34px;
+            margin: 0 auto;
+            max-width: 920px;
+            box-shadow: 0 14px 46px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.06)
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin: 0 0 12px 0
+        }
+
+        p {
+            color: var(--text);
+            line-height: 1.75;
+            margin: 10px 0;
+            font-size: 1.08rem
+        }
+
+        /* promises list */
+        .promises-list {
+            text-align: left;
+            max-width: 700px;
+            margin: 18px auto;
+            padding-left: 8px
+        }
+
+        .promises-list li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text)
+        }
+
+        .promises-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--gold);
+            font-size: 1.4rem
+        }
+
+        /* gallery */
+        .memory-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 26px
+        }
+
+        .memory-gallery>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .memory-frame {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid var(--frame-border);
+            box-shadow: 0 6px 26px rgba(0, 0, 0, 0.45);
+            background: linear-gradient(180deg, rgba(139, 69, 19, 0.06), rgba(0, 0, 0, 0.06));
+            position: relative;
+            transition: transform .28s ease, box-shadow .28s ease;
+        }
+
+        .memory-frame:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6)
+        }
+
+        .memory-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform .8s cubic-bezier(.2, .8, .2, 1), opacity .6s ease;
+            opacity: 0;
+        }
+
+        .memory-frame img.loaded {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .memory-frame img:hover {
+            transform: scale(1.05)
+        }
+
+        .memory-caption {
+            margin-top: 10px;
+            color: var(--accent);
+            font-style: italic;
+            text-align: center
+        }
+
+        /* surprise final animations */
+        .signature {
+            margin-top: 14px;
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 1.6rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(10px) scale(.98);
+            transition: all .9s cubic-bezier(.2, .9, .2, 1);
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: none;
+            transition-delay: .12s
+        }
+
+        .heart-pulse {
+            animation: pulseHeart 1.6s infinite ease-in-out;
+        }
+
+        @keyframes pulseHeart {
+            0% {
+                transform: scale(1)
+            }
+
+            50% {
+                transform: scale(1.05)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        /* falling hearts */
+        .hearts {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: visible;
+            z-index: 999;
+        }
+
+        .hearts .heart {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle at 30% 20%, #fff7dd 10%, #ffcfa0 40%, #ff9b9b 70%);
+            transform: rotate(-45deg);
+            border-radius: 4px 4px 0 0;
+            opacity: 0.12;
+            filter: blur(.2px);
+            animation: fall linear forwards;
+        }
+
+        .hearts .heart::after,
+        .hearts .heart::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: inherit;
+            top: -9px;
+            left: 0;
+        }
+
+        .hearts .heart::before {
+            left: 9px;
+            top: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(-45deg);
+                opacity: .12;
+            }
+
+            50% {
+                opacity: .18;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(30deg);
+                opacity: 0;
+            }
+        }
+
+        /* bottom nav */
+        .nav-row {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* footer tip */
+        footer {
+            text-align: center;
+            color: var(--muted);
+            margin-top: 28px;
+        }
+
+        /* responsive */
+        @media (max-width:920px) {
+            .memory-gallery {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            h1 {
+                font-size: 2.2rem
+            }
+
+            .music-wrap .glow-ring {
+                width: 78px;
+                height: 78px
+            }
+        }
+
+        @media (max-width:560px) {
+            .memory-gallery {
+                grid-template-columns: 1fr
+            }
+
+            .content-card {
+                padding: 20px
+            }
+
+            h1 {
+                font-size: 1.9rem
+            }
+
+            #bigPlay {
+                padding: 12px 20px
+            }
+
+            .music-ctr {
+                flex-direction: column
+            }
+
+            .glow-ring {
+                display: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            <div class="hero-card">
+                <h1 id="mainHeading">Forgive Me, My Love…</h1>
+                <div class="divider"></div>
+                <h3 id="subHeading">You deserved peace… and I gave you storms.</h3>
+                <p class="leadin" id="tagline">From the man who failed you… but is learning to love you better.</p>
+
+                <!-- centered play button with glow -->
+                <div class="music-ctr">
+                    <div class="music-wrap" id="musicWrap">
+                        <div class="glow-ring" id="glowRing" aria-hidden="true"></div>
+                        <button id="bigPlay">Play Music 🎵</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="quick">
+            <button class="nav-btn" data-goto="1">Home</button>
+            <button class="nav-btn" data-goto="2">Letter</button>
+            <button class="nav-btn" data-goto="3">Confession</button>
+            <button class="nav-btn" data-goto="4">Promises</button>
+            <button class="nav-btn" data-goto="5">Memories</button>
+            <button class="nav-btn" data-goto="6">Final</button>
+        </nav>
+
+        <main>
+            <!-- Page 1 -->
+            <section id="page-1" class="page active" data-page="1">
+                <div class="content-card">
+                    <h2>Welcome</h2>
+                    <p>Begin reading to see how sorry I am.</p>
+                    <div class="nav-row">
+                        <button class="btn nav-btn" data-next="2">Begin Reading →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 2 -->
+            <section id="page-2" class="page" data-page="2">
+                <div class="content-card">
+                    <h2>To the woman I never want to hurt again…</h2>
+                    <div class="divider"></div>
+                    <p id="p1">Krishna, I know you're already holding so many heavy things in your heart.</p>
+                    <p id="p2">You're fighting battles I don't always see, but I feel how deeply they affect you.</p>
+                    <p id="p3">And when you deserved calmness, I gave you my immaturity. My impatience. My unnecessary
+                        reactions.</p>
+                    <p id="p4">Instead of comfort, I became noise. Instead of peace, I became pressure.</p>
+                    <p id="p5">I see it now… and I am truly, painfully sorry.</p>
+
+                    <div class="nav-row">
+                        <button class="nav-btn" data-prev="1">← Back</button>
+                        <button class="nav-btn" data-next="3">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 3 -->
+            <section id="page-3" class="page" data-page="3">
+                <div class="content-card">
+                    <h2>I hurt you when you were already hurting…</h2>
+                    <div class="divider"></div>
+                    <p>You are carrying wounds I should have protected you from, not added to.</p>
+                    <p>And instead of being your shelter, I became another burden.</p>
+                    <p>My reactions, my tone, my lack of control — they cut deeper than I realized.</p>
+                    <p>You didn't deserve that. You deserved softness. You deserved someone who understood your pain
+                        before expressing his own.</p>
+                    <p>I will rise into the man you can rely on — even in your darkest nights.</p>
+
+                    <div class="nav-row">
+                        <button class="nav-btn" data-prev="2">← Back</button>
+                        <button class="nav-btn" data-next="4">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 4 -->
+            <section id="page-4" class="page" data-page="4">
+                <div class="content-card">
+                    <h2>My Promises to You… even in the dark.</h2>
+                    <div class="divider"></div>
+                    <ul class="promises-list">
+                        <li>I will listen before I react.</li>
+                        <li>I will never treat your pains as small again.</li>
+                        <li>I will choose gentleness over ego.</li>
+                        <li>I will hold your emotions with steadiness.</li>
+                        <li>I will not let my flaws drown the love you deserve.</li>
+                        <li>I will grow for us.</li>
+                        <li>I will make you feel safe, not overwhelmed.</li>
+                    </ul>
+
+                    <div class="nav-row">
+                        <button class="nav-btn" data-prev="3">← Back</button>
+                        <button class="nav-btn" data-next="5">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 5 - Memories -->
+            <section id="page-5" class="page" data-page="5">
+                <div class="content-card">
+                    <h2>The moments that remind me why you're worth fighting for</h2>
+                    <div class="divider"></div>
+
+                    <div class="memory-gallery" aria-label="memories">
+                        <div>
+                            <div class="memory-frame"><img data-src="images/my_favourite_person.jpeg"
+                                    alt="My favourite person"></div>
+                            <div class="memory-caption">My favourite person.</div>
+                        </div>
+
+                        <div>
+                            <div class="memory-frame"><img data-src="images/My_safe_place.jpeg" alt="My safe place">
+                            </div>
+                            <div class="memory-caption">My safe place.</div>
+                        </div>
+
+                        <div>
+                            <div class="memory-frame"><img data-src="images/my_peace.jpeg" alt="My peace"></div>
+                            <div class="memory-caption">My peace.</div>
+                        </div>
+
+                        <div>
+                            <div class="memory-frame"><img data-src="images/my_home.jpeg" alt="My home"></div>
+                            <div class="memory-caption">My home.</div>
+                        </div>
+
+                        <div>
+                            <div class="memory-frame"><img data-src="images/my_forever.jpeg" alt="My forever"></div>
+                            <div class="memory-caption">My forever.</div>
+                        </div>
+
+                        <div>
+                            <div class="memory-frame"><img data-src="images/The_only_one_my_heart_chooses.JPG"
+                                    alt="The only one"></div>
+                            <div class="memory-caption">The only one my heart chooses.</div>
+                        </div>
+                    </div>
+
+                    <div class="nav-row">
+                        <button class="nav-btn" data-prev="4">← Back</button>
+                        <button class="nav-btn" data-next="6">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 6 Final -->
+            <section id="page-6" class="page" data-page="6">
+                <div class="content-card">
+                    <h2>You are bigger than my mistakes.</h2>
+                    <h3>And our love… it deserves better than the worst version of me.</h3>
+                    <div class="divider"></div>
+
+                    <div style="max-width:760px;margin:0 auto;color:var(--text);line-height:1.9;font-size:1.08rem;"
+                        class="reveal" id="finalText">
+                        I'm here.<br>I'm hurting with you.<br>I'm learning for you.<br>I'm changing — because you're
+                        worth every version of me I haven't become yet.
+                    </div>
+
+                    <div class="signature reveal" id="finalSignature">— <span id="signatureName">Krushanu</span> ❤️
+                    </div>
+
+                    <div class="nav-row" style="margin-top:18px;">
+                        <button class="nav-btn" data-prev="5">← Back</button>
+                        <button class="nav-btn" data-next="1">Back to Home →</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            Tip: press Play Music once if audio doesn't start automatically.
+        </footer>
+    </div>
+
+    <!-- falling hearts container -->
+    <div class="hearts" id="heartsContainer" aria-hidden="true"></div>
+
+    <!-- persistent audio element -->
+    <audio id="bgAudio" preload="auto" crossorigin="anonymous">
+        <source src="Audio/song.mp3" type="audio/mpeg">
+        Your browser does not support audio playback.
+    </audio>
+
+    <script>
+        (function () {
+            // Elements
+            const pages = Array.from(document.querySelectorAll('section.page'));
+            const bigPlay = document.getElementById('bigPlay');
+            const musicWrap = document.getElementById('musicWrap');
+            const glowRing = document.getElementById('glowRing');
+            const bgAudio = document.getElementById('bgAudio');
+            const heartsContainer = document.getElementById('heartsContainer');
+
+            // Load lazy images when entering gallery
+            function loadGalleryImages() {
+                const imgs = document.querySelectorAll('#page-5 img[data-src]');
+                imgs.forEach(img => {
+                    if (!img.src) {
+                        img.src = img.getAttribute('data-src');
+                        img.addEventListener('load', () => img.classList.add('loaded'));
+                    }
+                });
+            }
+
+            // Navigation with slide animation
+            let currentPage = 1;
+            function showPage(pageNum, direction = 'right') {
+                pageNum = Number(pageNum);
+                if (pageNum === currentPage) return;
+                const prev = document.querySelector(`[data-page="${currentPage}"]`);
+                const next = document.querySelector(`[data-page="${pageNum}"]`);
+                if (!next) return;
+
+                // Decide classes for direction
+                const outClass = direction === 'right' ? 'slide-out-left' : 'slide-out-right';
+                const inClass = direction === 'right' ? 'slide-in-right' : 'slide-in-left';
+
+                // clear any ongoing classes
+                prev.classList.remove('active', 'slide-in-right', 'slide-in-left', 'slide-out-left', 'slide-out-right');
+                next.classList.remove('active', 'slide-in-right', 'slide-in-left', 'slide-out-left', 'slide-out-right');
+
+                // animate prev out and next in
+                prev.classList.add(outClass);
+                // ensure next is visible for animation
+                next.classList.add('active', inClass);
+
+                // after animation, clean classes
+                setTimeout(() => {
+                    prev.classList.remove(outClass);
+                    next.classList.remove(inClass);
+                    // load gallery images when page 5 shown
+                    if (pageNum === 5) loadGalleryImages();
+                    // when final page revealed, trigger reveal animation & hearts
+                    if (pageNum === 6) triggerFinalReveal();
+                }, 480);
+
+                currentPage = pageNum;
+                // update hash
+                history.replaceState(null, '', '#page-' + pageNum);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // click delegation for nav buttons
+            document.body.addEventListener('click', (e) => {
+                const next = e.target.closest('[data-next]');
+                const prev = e.target.closest('[data-prev]');
+                const goto = e.target.closest('[data-goto]');
+                if (next) { showPage(next.getAttribute('data-next'), 'right'); return; }
+                if (prev) { showPage(prev.getAttribute('data-prev'), 'left'); return; }
+                if (goto) { showPage(goto.getAttribute('data-goto'), (Number(goto.getAttribute('data-goto')) > currentPage) ? 'right' : 'left'); return; }
+            });
+
+            // keyboard nav
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    const nextIndex = Math.min(pages.length, currentPage + 1);
+                    showPage(nextIndex, 'right');
+                } else if (e.key === 'ArrowLeft') {
+                    const prevIndex = Math.max(1, currentPage - 1);
+                    showPage(prevIndex, 'left');
+                }
+            });
+
+            // set initial page from hash
+            (function initPageFromHash() {
+                const hash = location.hash.replace('#page-', '');
+                const initial = hash ? Number(hash) : 1;
+                // hide all then show initial
+                pages.forEach(p => p.classList.remove('active'));
+                const start = document.querySelector(`[data-page="${initial}"]`);
+                if (start) start.classList.add('active');
+                currentPage = initial;
+                if (initial === 5) loadGalleryImages();
+            })();
+
+            // Audio playback control
+            async function tryAutoplay() {
+                try {
+                    bgAudio.muted = true;
+                    await bgAudio.play();
+                    bgAudio.muted = false;
+                    await bgAudio.play();
+                    setPlaying(true);
+                } catch (err) {
+                    setPlaying(false);
+                    // Autoplay blocked — show Play button (user will press)
+                }
+            }
+
+            function setPlaying(on) {
+                if (on) {
+                    musicWrap.classList.add('playing');
+                    // change button text
+                    bigPlay.textContent = 'Pause Music ⏸️';
+                } else {
+                    musicWrap.classList.remove('playing');
+                    bigPlay.textContent = 'Play Music 🎵';
+                }
+            }
+
+            bigPlay.addEventListener('click', async () => {
+                if (bgAudio.paused) {
+                    try {
+                        bgAudio.muted = false;
+                        await bgAudio.play();
+                        setPlaying(true);
+                    } catch (err) {
+                        alert('Unable to start audio. If you are testing locally, run a simple HTTP server (python -m http.server) or click Play again.');
+                    }
+                } else {
+                    bgAudio.pause();
+                    setPlaying(false);
+                }
+            });
+
+            // update UI when audio is paused/played (handles external toggles)
+            bgAudio.addEventListener('play', () => setPlaying(true));
+            bgAudio.addEventListener('pause', () => setPlaying(false));
+            bgAudio.addEventListener('ended', () => setPlaying(false));
+
+            // try autoplay shortly after load
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(tryAutoplay, 320);
+            });
+
+            /* Final reveal: show text + signature and hearts pulse */
+            function triggerFinalReveal() {
+                const txt = document.getElementById('finalText');
+                const sign = document.getElementById('finalSignature');
+                txt.classList.add('show');
+                sign.classList.add('show', 'heart-pulse');
+                // spawn gentle hearts for 6 seconds in lower density
+                spawnHearts(8, 6000);
+            }
+
+            /* Falling hearts generator */
+            function spawnHearts(count = 10, duration = 5000) {
+                const w = window.innerWidth;
+                for (let i = 0; i < count; i++) {
+                    const h = document.createElement('div');
+                    h.className = 'heart';
+                    const left = Math.random() * w;
+                    h.style.left = left + 'px';
+                    h.style.top = (-20 - Math.random() * 40) + 'px';
+                    const delay = Math.random() * 800;
+                    const speed = duration + Math.random() * 2000;
+                    h.style.animationDuration = (speed / 1000) + 's';
+                    h.style.opacity = (0.06 + Math.random() * 0.12).toString();
+                    h.style.transform = 'rotate(' + (Math.random() * 60 - 30) + 'deg)';
+                    heartsContainer.appendChild(h);
+                    // remove after animation completes
+                    setTimeout(() => {
+                        if (h && h.parentNode) h.parentNode.removeChild(h);
+                    }, speed + delay + 200);
+                }
+            }
+
+            // Also spawn a very subtle background of slow hearts (low CPU)
+            setInterval(() => spawnHearts(2, 8000), 2800);
+
+            /* Lazy-load gallery on first show (also ensures smooth transitions) */
+            // handled in showPage when page 5 is shown
+
+            // Element SDK integration placeholder (non-destructive)
+            const defaultConfig = {
+                main_heading: "Forgive Me, My Love…",
+                hero_subheading: "You deserved peace… and I gave you storms.",
+                hero_tagline: "From the man who failed you… but is learning to love you better.",
+                signature_name: "Krushanu",
+                partner_name: "Krishna",
+            };
+            async function onConfigChange(config) {
+                document.getElementById('mainHeading').textContent = config.main_heading || defaultConfig.main_heading;
+                document.getElementById('subHeading').textContent = config.hero_subheading || defaultConfig.hero_subheading;
+                document.getElementById('tagline').textContent = config.hero_tagline || defaultConfig.hero_tagline;
+                document.getElementById('signatureName').textContent = config.signature_name || defaultConfig.signature_name;
+            }
+            if (window.elementSdk && window.elementSdk.init) {
+                window.elementSdk.init({ defaultConfig, onConfigChange, mapToCapabilities: (c) => ({}) });
+            }
+        })();
+    </script>
+</body>
+
+</html>
